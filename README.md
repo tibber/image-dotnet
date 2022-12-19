@@ -1,1 +1,1 @@
-# image-dotnet
+# Tibber image for running .NET services
