@@ -5,4 +5,4 @@ RUN apt-get update && apt-get install -y wget curl ca-certificates gnupg \
   && wget https://download.newrelic.com/548C16BF.gpg \
   && apt-key add 548C16BF.gpg \
   && apt-get update \
-  && apt-get install -y newrelic-netcore20-agent
+  && apt-get install -y newrelic-dotnet-agent
