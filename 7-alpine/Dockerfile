@@ -8,6 +8,9 @@ ENV NEW_RELIC_APPLICATION_LOGGING_ENABLED	false
 ENV NEW_RELIC_APPLICATION_LOGGING_FORWARDING_ENABLED	false
 ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED	true
 
+# This variable enables New Relic (disabled by default)
+ENV CORECLR_ENABLE_PROFILING 0
+
 
 # These variables need to be set in the task definition
 # NEW_RELIC_APP_NAME	<service name>
@@ -18,7 +21,7 @@ RUN  mkdir /usr/local/newrelic-dotnet-agent \
 && cd /usr/local \
 && export NEW_RELIC_DOWNLOAD_URI=https://download.newrelic.com/$(wget -qO - "https://nr-downloads-main.s3.amazonaws.com/?delimiter=/&prefix=dot_net_agent/latest_release/newrelic-dotnet-agent" | grep -E -o 'dot_net_agent/latest_release/newrelic-dotnet-agent_[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){2}_amd64\.tar\.gz') \
 && echo "Downloading: $NEW_RELIC_DOWNLOAD_URI into $(pwd)" \
-&& wget -O - "$NEW_RELIC_DOWNLOAD_URI" | gzip -dc | tar xf -
+&& wget -O - "$NEW_RELIC_DOWNLOAD_URI" | gzip -dc | tar xf - \
+&& apk add --no-cache icu-data-full icu-libs
 
-# This variable enables New Relic (disabled by default)
-ENV CORECLR_ENABLE_PROFILING 0
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
