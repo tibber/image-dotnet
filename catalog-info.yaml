@@ -4,6 +4,7 @@ metadata:
   name: image-dotnet
   annotations:
     github.com/project-slug: tibber/image-dotnet
+    circleci.com/project-slug: gh/tibber/image-dotnet
 spec:
   type: image
   lifecycle: production
