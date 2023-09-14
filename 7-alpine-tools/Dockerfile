@@ -7,7 +7,7 @@ RUN dotnet tool install --global dotnet-gcmon
 RUN dotnet tool install --global dotnet-stack
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine
-# Copy installed tools from the build image. This increases image size from 162MB to 269MB
+# Copy installed tools from the build image. This increases image size from 262MB to 370MB
 COPY --from=build /root/.dotnet /root/.dotnet
 ENV PATH="$PATH:/root/.dotnet/tools"
 
