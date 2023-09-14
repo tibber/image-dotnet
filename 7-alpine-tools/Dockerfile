@@ -1,4 +1,15 @@
+# Use the SDK image to build and install tools
+FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
+RUN dotnet tool install --global dotnet-trace
+RUN dotnet tool install --global dotnet-counters
+RUN dotnet tool install --global dotnet-dump
+RUN dotnet tool install --global dotnet-gcmon
+RUN dotnet tool install --global dotnet-stack
+
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine
+# Copy installed tools from the build image. This increases image size from 162MB to 269MB
+COPY --from=build /root/.dotnet /root/.dotnet
+ENV PATH="$PATH:/root/.dotnet/tools"
 
 # Defaults New Relic
 ENV CORECLR_NEWRELIC_HOME	/usr/local/newrelic-dotnet-agent
