@@ -1,6 +1,7 @@
 name: Tibber Repo Validator
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
