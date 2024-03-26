@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y wget curl ca-certificates gnupg \
   && apt-get update \
   && apt-get install -y newrelic-dotnet-agent
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-jammy-chiseled AS final
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-jammy-chiseled-extra AS final
 
 ENV CORECLR_NEWRELIC_HOME /usr/local/newrelic-dotnet-agent
 ENV CORECLR_PROFILER {36032161-FFC0-4B61-B559-F6C5D41BAE5A}
