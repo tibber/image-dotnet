@@ -1,12 +1,12 @@
 # Use the SDK image to build and install tools
-FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine@sha256:12df237d4c70c1dcbaf635b1048a20231c30ca25cf41cf83384414504137f69b AS build
 RUN dotnet tool install --global dotnet-trace
 RUN dotnet tool install --global dotnet-counters
 RUN dotnet tool install --global dotnet-dump
 RUN dotnet tool install --global dotnet-gcmon
 RUN dotnet tool install --global dotnet-stack
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine@sha256:3eb505ef3478500d387ca531e6380ee5fd4f95e9ad09e725ac8baed240f03298
 # Copy installed tools from the build image. This increases image size from 262MB to 370MB
 COPY --from=build /root/.dotnet /root/.dotnet
 ENV PATH="$PATH:/root/.dotnet/tools"
