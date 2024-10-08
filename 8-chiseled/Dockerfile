@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0@sha256:c3cbe19080b51cffbb57789c27b6f349f305f39a91d1bbdd1ecb65589525c4e6 AS build
+FROM mcr.microsoft.com/dotnet/aspnet:8.0@sha256:95ee01f3e36bc2d5e0872ab5e65572376161ae486b431a60404b5a8073c9a9bb AS build
 
 RUN apt-get update && apt-get install -y wget curl ca-certificates gnupg \
   && echo 'deb http://apt.newrelic.com/debian/ newrelic non-free' | tee /etc/apt/sources.list.d/newrelic.list \
