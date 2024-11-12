@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine@sha256:9ac5947b2c46266ab5549021d09d88be092e0e100c6596eede645909a6764153
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine@sha256:56b0baf7e2b8136cc75c359cbd7c358ad644f48dc7153fb6f174784b390eaa02
 
 # Defaults New Relic
 ENV CORECLR_NEWRELIC_HOME	/usr/local/newrelic-dotnet-agent
