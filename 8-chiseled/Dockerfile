@@ -18,5 +18,5 @@ ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED true
 # This variable enables New Relic (disabled by default)
 ENV CORECLR_ENABLE_PROFILING 0
 
-COPY --from=build /usr/local/newrelic-dotnet-agent /usr/local/
+COPY --from=build /usr/local/newrelic-dotnet-agent/ /usr/local/newrelic-dotnet-agent/
 COPY --from=build /usr/bin/sleep /usr/bin/
