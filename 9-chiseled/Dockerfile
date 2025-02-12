@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y wget curl ca-certificates gnupg \
   && apt-get update \
   && apt-get install -y newrelic-dotnet-agent
 
-FROM mcr.microsoft.com/dotnet/aspnet:9.0-noble-chiseled-extra@sha256:c40eb00e0c9b9b6976d9a8567c0a14a2db1d862c0cb39db41b86c9b5ec2720ea AS final
+FROM mcr.microsoft.com/dotnet/aspnet:9.0-noble-chiseled-extra@sha256:35940462f67c115dc38da1aa1d93e0ab25a4e9e5a1efb19ba8c52d56a0069a97 AS final
 
 ENV CORECLR_NEWRELIC_HOME /usr/local/newrelic-dotnet-agent
 ENV CORECLR_PROFILER {36032161-FFC0-4B61-B559-F6C5D41BAE5A}
