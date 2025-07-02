@@ -6,7 +6,7 @@ RUN dotnet tool install --global dotnet-dump
 RUN dotnet tool install --global dotnet-gcmon
 RUN dotnet tool install --global dotnet-stack
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine@sha256:91106a05a57b3ef509919d0d61206317f63d27b23b666d38668b14ba8485975c
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine@sha256:be25345551555a8d61b91b603e8ee08a5a7d23779ca8c1e84028fdb551b950ad
 # Copy installed tools from the build image. This increases image size from 262MB to 370MB
 COPY --from=build /root/.dotnet /root/.dotnet
 ENV PATH="$PATH:/root/.dotnet/tools"
