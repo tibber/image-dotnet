@@ -1,5 +1,5 @@
 # Use the SDK image to build and install tools
-FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine@sha256:26a8e9c8c9854b0543a3ddaacb56ba96caaf47c4482844e5f7ad1f70338b97e3 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine@sha256:a4f9e22c5740557ae3b0b38150d3ffccf13ca6c29f5b7c315ba166134c2fed16 AS build
 RUN dotnet tool install --global dotnet-trace
 RUN dotnet tool install --global dotnet-counters
 RUN dotnet tool install --global dotnet-dump
