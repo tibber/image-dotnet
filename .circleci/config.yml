@@ -1,0 +1,54 @@
+version: 2.1
+
+orbs:
+  tibber-orb: tibber/tibber-orb@2
+
+executors:
+  builder:
+    resource_class: small
+    docker:
+      - image: cimg/base:stable
+
+jobs:
+  build_push_8_chiseled:
+    executor: builder
+    steps:
+      - setup_remote_docker
+      - checkout
+      - tibber-orb/build_and_push_image:
+          path: 8-chiseled
+          repo: image-dotnet
+          image_tags: 8-chiseled
+          platform: linux/amd64,linux/arm64
+
+  build_push_9_chiseled:
+    executor: builder
+    steps:
+      - setup_remote_docker
+      - checkout
+      - tibber-orb/build_and_push_image:
+          path: 9-chiseled
+          repo: image-dotnet
+          image_tags: 9-chiseled
+          platform: linux/amd64,linux/arm64
+
+workflows:
+  build-deploy:
+    jobs:
+      - build_push_8_chiseled:
+          filters:
+            branches:
+              only:
+                - main
+                - toni/circleci
+          context:
+            - AWS
+
+      - build_push_9_chiseled:
+          filters:
+            branches:
+              only:
+                - main
+                - toni/circleci
+          context:
+            - AWS
