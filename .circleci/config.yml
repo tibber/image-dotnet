@@ -22,7 +22,7 @@ jobs:
           repo: image-dotnet
           image_tags: << parameters.image_tag >>
           platform: linux/amd64,linux/arm64
-      - old_images_to_keep: 1000
+      - old_images_to_keep: 10000
 
   build_image:
     executor: builder
