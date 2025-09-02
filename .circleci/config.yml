@@ -1,0 +1,75 @@
+version: 2.1
+
+orbs:
+  tibber-orb: tibber/tibber-orb@2
+
+executors:
+  builder:
+    resource_class: small
+    docker:
+      - image: cimg/base:current
+
+jobs:
+  build_and_push_image:
+    executor: builder
+    parameters:
+      image_tag: { type: string }
+    steps:
+      - setup_remote_docker
+      - checkout
+      - tibber-orb/build_and_push_image:
+          path: << parameters.image_tag >>
+          repo: image-dotnet
+          image_tags: << parameters.image_tag >>
+          platform: linux/amd64,linux/arm64
+
+  build_image:
+    executor: builder
+    parameters:
+      image_tag: { type: string }
+    steps:
+      - setup_remote_docker
+      - checkout
+      - tibber-orb/build_image:
+          path: << parameters.image_tag >>
+          repo: image-dotnet
+          platform: linux/amd64,linux/arm64
+
+workflows:
+  build-deploy:
+    jobs:
+      - build_and_push_image:
+          image_tag: 8-chiseled
+          filters:
+            branches:
+              only:
+                - main
+          context:
+            - AWS
+
+      - build_and_push_image:
+          image_tag: 9-chiseled
+          filters:
+            branches:
+              only:
+                - main
+          context:
+            - AWS
+
+      - build_image:
+          image_tag: 8-chiseled
+          filters:
+            branches:
+              ignore:
+                - main
+          context:
+            - AWS
+
+      - build_image:
+          image_tag: 9-chiseled
+          filters:
+            branches:
+              ignore:
+                - main
+          context:
+            - AWS
