@@ -74,3 +74,12 @@ workflows:
                 - main
           context:
             - AWS
+
+      - build_image:
+          image_tag: 10-chiseled-preview
+          filters:
+            branches:
+              ignore:
+                - main
+          context:
+            - AWS
