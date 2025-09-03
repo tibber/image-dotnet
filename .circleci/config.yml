@@ -76,7 +76,7 @@ workflows:
             - AWS
 
       - build_image:
-          image_tag: 10-chiseled
+          image_tag: 10-chiseled-preview
           filters:
             branches:
               ignore:
