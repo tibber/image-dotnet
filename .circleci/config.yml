@@ -66,6 +66,15 @@ workflows:
           context:
             - AWS
 
+      - build_and_push_image:
+          image_tag: 10-chiseled
+          filters:
+            branches:
+              only:
+                - main
+          context:
+            - AWS
+
       - build_image:
           image_tag: 8-chiseled
           filters:
