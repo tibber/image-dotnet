@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:10.0.0-rc.1@sha256:5b558c0d5f65031e34528f0c68c954f03f4db77ee18504cad183d239328f55ca AS build
+FROM mcr.microsoft.com/dotnet/aspnet:10.0.0-rc.1@sha256:d9a0d4006dbbc14d877b00c5e7113b432bac6bca6d12816a6e8fd999bac72797 AS build
 
 # Install New Relic .NET agent (requires trusted=yes due to repository GPG key issues)
 RUN apt-get update && apt-get install -y wget curl ca-certificates gnupg \
