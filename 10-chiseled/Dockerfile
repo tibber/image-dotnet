@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:10.0.0-rc.1@sha256:d9a0d4006dbbc14d877b00c5e7113b432bac6bca6d12816a6e8fd999bac72797 AS build
+FROM mcr.microsoft.com/dotnet/aspnet:10.0.0@sha256:7c4246c1c384319346d45b3e24a10a21d5b6fc9b36a04790e1588148ff8055b0 AS build
 
 # Install New Relic .NET agent (requires trusted=yes due to repository GPG key issues)
 RUN apt-get update && apt-get install -y wget curl ca-certificates gnupg \
@@ -23,7 +23,7 @@ RUN set -e && \
   curl -sSL "https://github.com/tibber/prestop-signal/releases/download/v0.0.18/prestop-signal_0.0.18_linux_${arch_tag}.tar.gz" \
   | tar -xz -C /usr/bin
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0-0.rc.1-noble-chiseled-extra@sha256:83795c4b066ec5f0610d8c3fdd977b65e7536c9bbade4f594e80e5fa24fb533a AS final
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-0-noble-chiseled-extra@sha256:64f42416803e32bee1f5d2d3eab5825581abd45b2e9c6f888fc873ff2c4cc378 AS final
 
 ENV CORECLR_NEWRELIC_HOME=/usr/local/newrelic-dotnet-agent
 ENV CORECLR_PROFILER="{36032161-FFC0-4B61-B559-F6C5D41BAE5A}"
