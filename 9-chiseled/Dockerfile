@@ -22,7 +22,7 @@ RUN set -e && \
   curl -sSL "https://github.com/tibber/prestop-signal/releases/download/v0.0.18/prestop-signal_0.0.18_linux_${arch_tag}.tar.gz" \
   | tar -xz -C /usr/bin
 
-FROM mcr.microsoft.com/dotnet/aspnet:9.0-noble-chiseled-extra@sha256:4bdd950e53eb04dc20eee68e36c91a1cda1426c128272f488e1fe9acb166581e AS final
+FROM mcr.microsoft.com/dotnet/aspnet:9.0-noble-chiseled-extra@sha256:e68c0a34baa22412c6e23fac48a34c00bba4df9f9fb4b18ee0cba5618fbff319 AS final
 
 ENV CORECLR_NEWRELIC_HOME /usr/local/newrelic-dotnet-agent
 ENV CORECLR_PROFILER {36032161-FFC0-4B61-B559-F6C5D41BAE5A}
